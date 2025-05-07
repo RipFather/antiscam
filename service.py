@@ -5,9 +5,9 @@ from concurrent.futures import Future
 import time
 from getid import TelegramIdFinder, SESSION_NAME, API_ID, API_HASH, errors
 
-_loop: asyncio.AbstractEventLoop | None = None
-_thread: threading.Thread | None = None
-_finder: TelegramIdFinder | None = None
+_loop: asyncio.AbstractEventLoop = None
+_thread: threading.Thread = None
+_finder: TelegramIdFinder = None
 _initialized = False
 _lock = threading.Lock()
 
@@ -85,7 +85,7 @@ def shutdown_telethon():
         _initialized = False
 
 
-def getids(username: str, timeout: int = 10) -> str | None:
+def getids(username: str, timeout: int = 10) -> str:
     global _loop, _finder, _initialized
     if not _initialized or _loop is None or not _loop.is_running() or _finder is None or not _finder.is_ready:
         return None
