@@ -38,7 +38,7 @@ class TelegramIdFinder:
         username_to_find: str,
         bot_username: str = DEFAULT_BOT_USERNAME,
         wait_time: int = DEFAULT_WAIT_TIME
-    ) -> str | None:
+    ) -> str:
         if not self._is_connected:
             return None
         extracted_id = None
